@@ -1,10 +1,10 @@
-from flask import Flask, Response, jsonify
+from flask import Flask, Response, json
 from flask_cors import CORS
-
+import json
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/news*": {"origins":"*"}})
 
-@app.get("/api/news")
+@app.route("/")
 def get_news():
     news = [
         {
@@ -19,3 +19,9 @@ def get_news():
         "date": "2025-04-1"
         }
     ]
+    return Response(json.dumps(news), content_type="application/json")
+def main():
+    app.run("localhost", 8000, True)
+
+if __name__ == "__main__":
+    main()
