@@ -4,16 +4,18 @@ import json
 app = Flask(__name__)
 CORS(app, resources={r"/api/news*": {"origins":"*"}})
 
-@app.route("/")
+@app.get("/")
 def get_news():
     news = [
         {
+        "id": "1",
         "name": "Поздравления",
         "description": "Всех с добрым утром!",
         "date": "2025-04-1"
         },
 
         {
+        "id": "2",
         "name": "Сегодня интересный день",
         "description": "Сегодня, 1 апреля, учёные нашли новую солнечную систему, где есть жизнь",
         "date": "2025-04-1"
